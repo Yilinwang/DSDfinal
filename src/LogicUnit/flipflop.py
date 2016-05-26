@@ -23,16 +23,16 @@ class JKflipflop:
 		return self.output
 
 	def getNextState(self):
-		J = self.J.getOutput
-		K = self.K.getOutput
+		J = self.J.getOutput()
+		K = self.K.getOutput()
 		if J == 0 and K == 0:
-			return output
+			return self.output
 		if J == 0 and K == 1:
 			return False
 		if J == 1 and K == 0:
 			return True
 		if J == 1 and K == 1:
-			return not output
+			return not self.output
 
 class RSflipflop:
 	def __init__(self):
@@ -59,16 +59,16 @@ class RSflipflop:
 		return self.output
 
 	def getNextState(self):
-		R = self.R.getOutput
-		S = self.S.getOutput
+		R = self.R.getOutput()
+		S = self.S.getOutput()
 		if R == 0 and S == 0:
-			return output
+			return self.output
 		if R == 0 and S == 1:
 			return False
 		if R == 1 and S == 0:
 			return True
 		if R == 1 and S == 1:
-			return not output
+			return not self.output
 
 class Dflipflop:
 	def __init__(self):
@@ -88,7 +88,7 @@ class Dflipflop:
 		return self.output
 
 	def getNextState(self):
-		return self.output
+		return self.D.getOutput()
 
 class Tflipflop:
 	def __init__(self):

@@ -28,5 +28,7 @@ class table:
 			result.append((table._toString(p), []))
 			for b in [False, True]:
 				self.i.setX(b)
-				map(lambda x, y: y.setOutput(x), p, self.flipflops)
+				for i in range(len(self.flipflops)):
+					self.flipflops[i].setOutput(p[i])
 				result[-1][-1].append((table._toString([ff.getNextState() for ff in self.flipflops]), self.o.getNextState()))
+		return result

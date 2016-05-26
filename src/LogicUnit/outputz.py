@@ -9,4 +9,4 @@ class outputz:
 		self.i = None
 	
 	def getNextState(self):
-		return self.i
+		return self.i.getOutput()
