@@ -3,4 +3,7 @@
 	-fx-min-height: 30px;
 	-fx-max-width: 60px;
 	-fx-max-height: 30px;
+	-fx-background-color: transparent;
+	-fx-border-color: #000000;
+	-fx-border-width: 1px;
 }
