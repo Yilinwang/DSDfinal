@@ -20,7 +20,7 @@ def main():
 	and_array = [andGate() for _ in range(4)]
 	or_array = [orGate() for _ in range(2)]
 	not_array = [notGate() for _ in range(3)]
-	
+
 	jk.setJ(and_array[0])
 	jk.setK(or_array[0])
 	d.setD(or_array[1])
@@ -46,7 +46,8 @@ def main():
 	or_array[1].set(and_array[2])
 
 	result = state.run()
-	print('x=\t0\t\t1')
+	table.toGraph(result)
+	print('x=\t0\t1')
 	for line in result:
 		print(line[0]+'\t'+line[1][0][0]+' '+str(line[1][0][1])+'\t'+line[1][1][0]+' '+str(line[1][1][1]))
 if __name__ == '__main__':
