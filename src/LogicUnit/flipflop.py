@@ -3,12 +3,21 @@ class JKflipflop:
 		self.J = None
 		self.K = None
 		self.output = None
-	
+		self.count = 0
+
 	def setJ(self, J):
 		self.J = J
 	
 	def setK(self, K):
 		self.K = K
+
+	def set(self, x):
+		if self.count == 0:
+			self.setJ(x)
+			self.count += 1
+		elif self.count == 1:
+			self.setK(x)
+			self.count += 1
 
 	def setOutput(self, o):
 		self.output = o
@@ -39,12 +48,21 @@ class RSflipflop:
 		self.R = None
 		self.S = None
 		self.output = None
+		self.count = 0
 	
 	def setR(self, R):
 		self.R = R
 	
 	def setS(self, S):
 		self.S = S
+
+	def set(self, x):
+		if self.count == 0:
+			self.setR(x)
+			self.count += 1
+		elif self.count == 1:
+			self.setS(x)
+			self.count += 1
 
 	def setOutput(self, o):
 		self.output = o
@@ -75,7 +93,7 @@ class Dflipflop:
 		self.D = None
 		self.output = None
 	
-	def setD(self, D):
+	def set(self, D):
 		self.D = D
 
 	def setOutput(self, o):
@@ -95,7 +113,7 @@ class Tflipflop:
 		self.T = None
 		self.output = None
 	
-	def setT(self, T):
+	def set(self, T):
 		self.T = T
 
 	def setOutput(self, o):

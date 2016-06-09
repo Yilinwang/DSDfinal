@@ -21,10 +21,10 @@ def main():
 	or_array = [orGate() for _ in range(2)]
 	not_array = [notGate() for _ in range(3)]
 
-	jk.setJ(and_array[0])
-	jk.setK(or_array[0])
-	d.setD(or_array[1])
-	z.setInput(and_array[3])
+	jk.set(and_array[0])
+	jk.set(or_array[0])
+	d.set(or_array[1])
+	z.set(and_array[3])
 
 	not_array[0].set(x)
 	not_array[1].set(jk)

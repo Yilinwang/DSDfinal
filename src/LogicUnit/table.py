@@ -30,7 +30,7 @@ class table:
 			state.node(s[0], s[0])
 		for s in result:
 			state.edge(s[0], s[1][0][0], label='0/'+s[1][0][1])
-			state.edge(s[0], s[1][1][0], label='0/'+s[1][1][1])
+			state.edge(s[0], s[1][1][0], label='1/'+s[1][1][1])
 		state.render('test.gv', view=True)
 
 

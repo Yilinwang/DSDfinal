@@ -2,7 +2,7 @@ class outputz:
 	def __init__(self):
 		self.i = None
 	
-	def setInput(self, x):
+	def set(self, x):
 		self.i = x
 	
 	def deleteInput(self):
