@@ -128,15 +128,6 @@ public class reverseGUI extends Application {
         hBox.getChildren().add(new GateButton("cmd", "nand", queue, gc));
         hBox.getChildren().add(new GateButton("cmd", "not", queue, gc));
 
-        bottom.setAlignment(Pos.CENTER_RIGHT);
-        bottom.setPadding(new Insets(10));
-        Button submit = new Button("Submit!!!!!");
-        submit.setStyle("-fx-max-width: 120px");
-        submit.setOnAction((event -> {
-            submitFunc(gridPane);
-        }));
-        bottom.getChildren().add(submit);
-
         gridPane.setVgap(10);
         gridPane.setHgap(10);
         gridPane.setPadding(new Insets(10, 10, 10, 10));
@@ -153,6 +144,38 @@ public class reverseGUI extends Application {
                 gridPane.add(tmp, i + 1, j);
             }
         }
+
+        bottom.setAlignment(Pos.CENTER_RIGHT);
+        bottom.setPadding(new Insets(10));
+        bottom.setSpacing(10);
+
+        Button clearBuffer = new Button("Clear Buffer");
+        clearBuffer.setStyle("-fx-max-width: 120px");
+        clearBuffer.setOnAction((event1 -> {
+            queue.clear();
+        }));
+        bottom.getChildren().add(clearBuffer);
+
+        Button clear = new Button("Clear=(");
+        clear.setStyle("-fx-max-width: 120px");
+        clear.setOnAction((event -> {
+            for(Node tmp: gridPane.getChildren()) {
+                GateButton tmpGate = (GateButton)tmp;
+                if(tmpGate.getType() == "obj" && tmpGate.getGate() != "x" && tmpGate.getGate() != "z") {
+                    tmpGate.clean();
+                }
+                if(tmpGate.getGate() == "z")
+                    tmpGate.cleanInput();
+            }
+        }));
+        bottom.getChildren().add(clear);
+
+        Button submit = new Button("Submit!!!!!");
+        submit.setStyle("-fx-max-width: 120px");
+        submit.setOnAction((event -> {
+            submitFunc(gridPane);
+        }));
+        bottom.getChildren().add(submit);
 
         stackPane.getChildren().add(canvas);
         stackPane.getChildren().add(gridPane);

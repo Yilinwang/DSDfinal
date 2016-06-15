@@ -81,9 +81,9 @@ class RSflipflop:
 		S = self.S.getOutput()
 		if R == 0 and S == 0:
 			return self.output
-		if R == 0 and S == 1:
-			return False
 		if R == 1 and S == 0:
+			return False
+		if R == 0 and S == 1:
 			return True
 		if R == 1 and S == 1:
 			return not self.output
@@ -126,4 +126,8 @@ class Tflipflop:
 		return self.output
 
 	def getNextState(self):
-		return not self.output
+		T = self.T.getOutput()
+		if T:
+			return not self.output
+		else:
+			return self.output

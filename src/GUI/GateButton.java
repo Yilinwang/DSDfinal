@@ -96,4 +96,17 @@ public class GateButton extends Button {
         super.setText(gate);
         super.setStyle("-fx-border-width: 1px");
     }
+
+    public void clean() {
+        gate = "";
+        name = "";
+        input.clear();
+        super.setText("");
+        super.setStyle("-fx-border-width: 0px");
+        gc.clearRect(0, 0, 780, 380);
+    }
+
+    public void cleanInput() {
+        input.clear();
+    }
 }

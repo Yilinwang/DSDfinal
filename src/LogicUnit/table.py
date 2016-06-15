@@ -32,6 +32,10 @@ class table:
 			state.edge(s[0], s[1][0][0], label='0/'+s[1][0][1])
 			state.edge(s[0], s[1][1][0], label='1/'+s[1][1][1])
 		state.render('test.gv', view=True)
+		with open('log', 'w') as wp:
+			wp.write('x=\t0\t1\n')
+			for line in result:
+				wp.write(line[0]+'\t'+line[1][0][0]+' '+str(line[1][0][1])+'\t'+line[1][1][0]+' '+str(line[1][1][1])+'\n')
 
 
 	def run(self):
