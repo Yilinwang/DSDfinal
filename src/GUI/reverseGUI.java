@@ -12,10 +12,18 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.io.*;
 
 public class reverseGUI extends Application {
     private void submitFunc(GridPane gridPane) {
         int count = 0;
+		try{
+			System.setOut(new PrintStream(new FileOutputStream("output.py")));
+		}
+		catch(Exception e){
+			System.err.printf("file not found.");
+		}
+		System.out.printf("from LogicUnit.flipflop import *\nfrom LogicUnit.gate import *\nfrom LogicUnit.inputx import *\nfrom LogicUnit.outputz import *\nfrom LogicUnit.table import *\nstate = table()\nx = inputx()\nz=outputz()\nstate.setInput(x)\nstate.setOutput(z)\n");
         for(Node tmp: gridPane.getChildren()) {
             GateButton gate = (GateButton)tmp;
             switch(gate.getGate()) {
@@ -85,6 +93,13 @@ public class reverseGUI extends Application {
                     System.out.printf(gate.getName()+".set("+inputGate.getName()+")\n");
             }
         }
+		System.out.printf("result = state.run()\ntable.toGraph(result)\n");
+		System.out.flush();
+		try{
+			Process p = Runtime.getRuntime().exec("python3.4 output.py");
+		} catch(Exception e){
+			System.err.printf("something wrong");
+		}
     }
 
     public void start(Stage stage) {
